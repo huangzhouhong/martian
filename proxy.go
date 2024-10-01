@@ -225,11 +225,11 @@ func (p *Proxy) Serve(l net.Listener) error {
 			tconn.SetKeepAlivePeriod(3 * time.Minute)
 		}
 
-		go p.handleLoop(conn)
+		go p.HandleLoop(conn)
 	}
 }
 
-func (p *Proxy) handleLoop(conn net.Conn) {
+func (p *Proxy) HandleLoop(conn net.Conn) {
 	p.connsMu.Lock()
 	p.conns.Add(1)
 	p.connsMu.Unlock()
